@@ -9,7 +9,7 @@ import Foundation
 
 public struct FileData: Codable {
     
-    let fileData: Data?
+    public let fileData: Data?
     
     enum CodingKeys: String, CodingKey {
         case fileData = "FILEDATA"
