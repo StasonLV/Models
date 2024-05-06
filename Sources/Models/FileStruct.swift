@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FileData: Codable {
+public struct FileData: Codable {
     
     let fileData: Data?
     

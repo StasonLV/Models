@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PrnSqlItem: Codable {
+public struct PrnSqlItem: Codable {
     let idItem: Int?
     let sName: String?
     
@@ -16,8 +16,8 @@ struct PrnSqlItem: Codable {
         case sName = "SNAME"
     }
     
-    init(from decoder: Decoder) throws {
-//        print("struct OneToManyItem : Codable init")
+    public init(from decoder: Decoder) throws {
+//        print("struct OneToManyItem : Codable public init")
         let values = try decoder.container(keyedBy: CodingKeys.self)
 //        print("OneToManyItem.rawValues:\(values)")
         idItem = try values.decodeIfPresent(Int.self, forKey: .idItem)

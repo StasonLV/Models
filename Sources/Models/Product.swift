@@ -8,9 +8,9 @@
 import Foundation
 import SwiftUI
 
-struct Product: Codable, Identifiable {
+public struct Product: Codable, Identifiable {
     
-    var id     : Int
+    public var id     : Int
     var name   : String
     var text   : String
     var color1 : String

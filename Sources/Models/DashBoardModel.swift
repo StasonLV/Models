@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct DashBoardItem: Codable, Identifiable {
+public struct DashBoardItem: Codable, Identifiable {
     
-    var id: String {
+    public var id: String {
         return sType ?? "NONE"
     }
     
@@ -60,7 +60,7 @@ struct DashBoardItem: Codable, Identifiable {
     }
     
     public init(from decoder: Decoder) throws {
-        print("struct ActionItem : Codable init")
+        print("struct ActionItem : Codable public init")
         let values = try decoder.container(keyedBy: CodingKeys.self)
         print("ActionItem.rawValues:\(values)")
         dbID = try values.decodeIfPresent(Int.self, forKey: .dbID)
@@ -89,7 +89,7 @@ struct DashBoardItem: Codable, Identifiable {
     
 }
 
-struct DashBoardData: Decodable {
+public struct DashBoardData: Decodable {
     let _data: [DashBoardItem]?
     let _struct: [StructItem]?
     let _info: InfoObject?
@@ -103,8 +103,8 @@ struct DashBoardData: Decodable {
         case _meta = "_meta"
     }
     
-    init(from decoder: Decoder) throws {
-//        print("struct ModuleMenuData : Codable init")
+    public init(from decoder: Decoder) throws {
+//        print("struct ModuleMenuData : Codable public init")
         //        print("CodingKeys.self: \(CodingKeys.self)")
         let values = try decoder.container(keyedBy: CodingKeys.self)
         //        print("values: \(values)")

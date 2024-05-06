@@ -32,7 +32,7 @@ extension ModuleMenuData.GenericValue {
 
 extension ModuleMenuData.GenericValue {
     
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let stringValue = try? container.decode(String.self) {
             self = .stringValue(stringValue)
@@ -54,7 +54,7 @@ extension ModuleMenuData.GenericValue {
 }
 
 extension ModuleMenuData.GenericValue {
-    func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
         case .stringValue(let stringValue): try container.encode(stringValue)
@@ -66,7 +66,7 @@ extension ModuleMenuData.GenericValue {
     }
 }
 
-struct ModuleMenuData : Decodable {
+public struct ModuleMenuData : Decodable {
     var _data : [[String:GenericValue]]?
     let _struct : [StructItem]?
     let _info : InfoObject?
@@ -89,8 +89,8 @@ struct ModuleMenuData : Decodable {
         self._meta = _meta
     }
     
-    init(from decoder: Decoder) throws {
-//        print("struct ModuleMenuDataObject : Decoder init")
+    public init(from decoder: Decoder) throws {
+//        print("struct ModuleMenuDataObject : Decoder public init")
         let values = try decoder.container(keyedBy: CodingKeys.self)
         _data = try values.decodeIfPresent([[String:GenericValue]].self, forKey: ._data)
         //        print("_data:\(String(describing: _data))")

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WebFieldItem: Codable {
+public struct WebFieldItem: Codable {
     let nPage:Int?                       //  01
     let idAdmModule:Int?                 //  02
     let id:Int?                          //  03
@@ -45,8 +45,8 @@ struct WebFieldItem: Codable {
         case nullable = "NULLABLE"
     }
     
-    init(from decoder: Decoder) throws {
-//        print("struct ActionItem : Codable init")
+    public init(from decoder: Decoder) throws {
+//        print("struct ActionItem : Codable public init")
         let values = try decoder.container(keyedBy: CodingKeys.self)
 //        print("ActionItem.rawValues:\(values)")
         nPage = try values.decodeIfPresent(Int.self, forKey: .nPage)
@@ -68,7 +68,7 @@ struct WebFieldItem: Codable {
     }
 }
 
-struct WebFieldsData : Decodable {
+public struct WebFieldsData : Decodable {
     let _data : [WebFieldItem]?
     let _struct : [StructItem]?
     let _info : InfoObject?
@@ -82,8 +82,8 @@ struct WebFieldsData : Decodable {
         case _meta = "_meta"
     }
     
-    init(from decoder: Decoder) throws {
-        print("struct WebFieldsData : Codable init")
+    public init(from decoder: Decoder) throws {
+        print("struct WebFieldsData : Codable public init")
         print("CodingKeys.self: \(CodingKeys.self)")
         let values = try decoder.container(keyedBy: CodingKeys.self)
         print("values: \(values)")

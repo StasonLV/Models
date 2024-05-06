@@ -20,7 +20,7 @@ public struct GridData {
     var gridItemLayout = [GridItem]()
 }
 
-struct Coloumn {
+public struct Coloumn {
     var caption:String
     var field:String
     var order:Int
