@@ -30,13 +30,13 @@ public struct ServerOracleError: Codable {
     }
 }
 
-enum NetworkError: Error {
+public enum NetworkError: Error {
     case statusCode401
     case undefinedError(String)
 }
 
 extension NetworkError: LocalizedError {
-    var errorDescription: String? {
+    public var errorDescription: String? {
         switch self {
         case .statusCode401:
             return NSLocalizedString("Error 401", comment:"Common Strings")
