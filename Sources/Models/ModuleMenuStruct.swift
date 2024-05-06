@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct MenuList : Identifiable {
+public struct MenuList : Identifiable {
     
-    var id: String {
+    public var id: String {
         return parentRow?.sName ?? "NONE"
     }
     var parentRow : ModuleMenuItem?
@@ -17,10 +17,10 @@ struct MenuList : Identifiable {
     var expanded : Bool
 }
 
-struct Menu  {
+public struct Menu  {
     var menu : [MenuList]
     
-    init(menuItems:[ModuleMenuItem]) {
+    public init(menuItems:[ModuleMenuItem]) {
         var parentList = [MenuList]()
         let childList = [ModuleMenuItem]()
         var tailList = [ModuleMenuItem]()
@@ -82,9 +82,9 @@ struct Menu  {
     }
 }
 
-struct ModuleMenuItem : Codable, Identifiable {
+public struct ModuleMenuItem : Codable, Identifiable {
     
-    var id: String {
+    public var id: String {
         return sName ?? "NONE"
     }
     let idMenuItem: Int?                                    // 01
@@ -197,8 +197,8 @@ struct ModuleMenuItem : Codable, Identifiable {
         return left.idMenuItem == right.idMenuItem
     }
     
-    init(from decoder: Decoder) throws {
-//        print("struct ModuleMenuItem : Codable init")
+    public init(from decoder: Decoder) throws {
+//        print("struct ModuleMenuItem : Codable public init")
         let values = try decoder.container(keyedBy: CodingKeys.self)
 //        print("ModuleMenuItem.rawValues:\(values)")
         idMenuItem = try values.decodeIfPresent(Int.self, forKey: .idMenuItem)
@@ -261,7 +261,7 @@ struct ModuleMenuItem : Codable, Identifiable {
     }
 }
 
-struct ModuleMenu : Decodable {
+public struct ModuleMenu : Decodable {
     let _data : [ModuleMenuItem]?
     let _struct : [StructItem]?
     let _info : InfoObject?
@@ -275,8 +275,8 @@ struct ModuleMenu : Decodable {
         case _meta = "_meta"
     }
     
-    init(from decoder: Decoder) throws {
-//        print("struct ModuleMenuData : Codable init")
+    public init(from decoder: Decoder) throws {
+//        print("struct ModuleMenuData : Codable public init")
         //        print("CodingKeys.self: \(CodingKeys.self)")
         let values = try decoder.container(keyedBy: CodingKeys.self)
         //        print("values: \(values)")

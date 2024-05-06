@@ -16,7 +16,7 @@ public struct ScreenContainer {
     var moduleMenuData : ModuleMenuData?
 }
 
-struct FieldItem : Decodable {
+public struct FieldItem : Decodable {
     let oraPrecision : Int?         // 01
     let oraScale : Int?             // 02
     let field : String?             // 03
@@ -58,8 +58,8 @@ struct FieldItem : Decodable {
         case signed = "SIGNED"
     }
     
-    init(from decoder: Decoder) throws {
-//        print("struct FieldItem : Codable init")
+    public init(from decoder: Decoder) throws {
+//        print("struct FieldItem : Codable public init")
         let values = try decoder.container(keyedBy: CodingKeys.self)
 //        print("FieldItem rawValues:\(values)")
         oraPrecision = try values.decodeIfPresent(Int.self, forKey: .oraPrecision)
@@ -84,8 +84,8 @@ struct FieldItem : Decodable {
     
 }
 
-struct StructItem : Decodable, Identifiable {
-    var id: Int {
+public struct StructItem : Decodable, Identifiable {
+    public var id: Int {
         return order ?? 0
     }
     
@@ -136,8 +136,8 @@ struct StructItem : Decodable, Identifiable {
         case nTextColor = "NTEXTCOLOR"
     }
     
-    init(from decoder: Decoder) throws {
-//        print("struct _structItem : Codable init")
+    public init(from decoder: Decoder) throws {
+//        print("struct _structItem : Codable public init")
         let values = try decoder.container(keyedBy: CodingKeys.self)
         //        print("_structItem rawValues:\(values)")
         fields = try values.decodeIfPresent([FieldItem].self, forKey: .fields)
@@ -166,7 +166,7 @@ struct StructItem : Decodable, Identifiable {
     
 }
 
-struct InfoObject : Decodable {
+public struct InfoObject : Decodable {
     
     let message : String?
     let status : String?
@@ -179,8 +179,8 @@ struct InfoObject : Decodable {
         case idItem = "ID"
     }
     
-    init(from decoder: Decoder) throws {
-//        print("struct _infoObject : Codable init")
+    public init(from decoder: Decoder) throws {
+//        print("struct _infoObject : Codable public init")
         let values = try decoder.container(keyedBy: CodingKeys.self)
         message = try values.decodeIfPresent(String.self, forKey: .message)
         status = try values.decodeIfPresent(String.self, forKey: .status)
@@ -189,7 +189,7 @@ struct InfoObject : Decodable {
     
 }
 
-struct MetaObject : Decodable {
+public struct MetaObject : Decodable {
     
     // Данные
     
@@ -264,8 +264,8 @@ struct MetaObject : Decodable {
         case sSumField = "SSUMFIELD"                // 19
     }
     
-    init(from decoder: Decoder) throws {
-//        print("struct _metaObject : Codable init")
+    public init(from decoder: Decoder) throws {
+//        print("struct _metaObject : Codable public init")
 //        print("CodingKeys.self: \(CodingKeys.self)")
         
         let values = try decoder.container(keyedBy: CodingKeys.self)

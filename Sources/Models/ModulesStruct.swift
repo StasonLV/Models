@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ModuleItem : Codable {
+public struct ModuleItem : Codable {
     let sName : String?
     let idItem : Int?
     let sLogo : String?
@@ -25,8 +25,8 @@ struct ModuleItem : Codable {
         case sIconName = "SICONNAME"
     }
     
-    init(from decoder: Decoder) throws {
-//        print("struct ModuleItem : Codable init")
+    public init(from decoder: Decoder) throws {
+//        print("struct ModuleItem : Codable public init")
         let values = try decoder.container(keyedBy: CodingKeys.self)
         sName = try values.decodeIfPresent(String.self, forKey: .sName)
         idItem = try values.decodeIfPresent(Int.self, forKey: .idItem)
@@ -56,7 +56,7 @@ struct ModuleItem : Codable {
     }
 }
 
-struct ModulesData : Decodable {
+public struct ModulesData : Decodable {
     let _data : [ModuleItem]?
     let _struct : [StructItem]?
     let _info : InfoObject?
@@ -70,8 +70,8 @@ struct ModulesData : Decodable {
         case _meta = "_meta"
     }
     
-    init(from decoder: Decoder) throws {
-//        print("struct BaseData : Codable init")
+    public init(from decoder: Decoder) throws {
+//        print("struct BaseData : Codable public init")
         let values = try decoder.container(keyedBy: CodingKeys.self)
         _data = try values.decodeIfPresent([ModuleItem].self, forKey: ._data)
         _struct = try values.decodeIfPresent([StructItem].self, forKey: ._struct)

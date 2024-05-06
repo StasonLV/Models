@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ServerOracleError: Codable {
+public struct ServerOracleError: Codable {
     let message: String?
     let status: Int?
     let info: String?
@@ -20,8 +20,8 @@ struct ServerOracleError: Codable {
         case reason = "REASON"
     }
     
-    init(from decoder: Decoder) throws {
-        print("struct ServerOracleError : Codable init")
+    public init(from decoder: Decoder) throws {
+        print("struct ServerOracleError : Codable public init")
         let values = try decoder.container(keyedBy: CodingKeys.self)
         message = try values.decodeIfPresent(String.self, forKey: .message)
         status = try values.decodeIfPresent(Int.self, forKey: .status)

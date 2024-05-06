@@ -15,7 +15,7 @@ import Foundation
  
  */
 
-struct OneToManyItem: Codable {
+public struct OneToManyItem: Codable {
     let idItem: Int?            // 1
     let stableName: String?     // 2
     let sComment: String?       // 3
@@ -28,8 +28,8 @@ struct OneToManyItem: Codable {
         
     }
     
-    init(from decoder: Decoder) throws {
-//        print("struct OneToManyItem : Codable init")
+    public init(from decoder: Decoder) throws {
+//        print("struct OneToManyItem : Codable public init")
         let values = try decoder.container(keyedBy: CodingKeys.self)
 //        print("OneToManyItem.rawValues:\(values)")
         idItem = try values.decodeIfPresent(Int.self, forKey: .idItem)

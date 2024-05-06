@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Constants {
+public struct Constants {
     static let useAsyncVersion = true // feature-флаг использования реализации сетевых запросов через новую модель параллелизма
     static let recipientMail = "online@reso.ru"
     static let applicationName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String != nil ? Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String : ""

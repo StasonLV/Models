@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct DataItem: Codable, Identifiable {
+public struct DataItem: Codable, Identifiable {
     
-    var id: Int {
+    public var id: Int {
         return idItem ?? 0
     }
     
@@ -102,8 +102,8 @@ struct DataItem: Codable, Identifiable {
         case _order = "ORDER"
     }
     
-    init(from decoder: Decoder) throws {
-//        print("struct ActionItem : Codable init")
+    public init(from decoder: Decoder) throws {
+//        print("struct ActionItem : Codable public init")
         let values = try decoder.container(keyedBy: CodingKeys.self)
 //        print("ActionItem.rawValues:\(values)")
         nullable = try values.decodeIfPresent(Bool.self, forKey: .nullable)
@@ -327,7 +327,7 @@ struct DataItem: Codable, Identifiable {
     }
 }
 
-struct DataSource : Decodable {
+public struct DataSource : Decodable {
     let _data : [DataItem]?
     let _struct : [StructItem]?
     let _info : InfoObject?
@@ -341,8 +341,8 @@ struct DataSource : Decodable {
         case _meta = "_meta"
     }
     
-    init(from decoder: Decoder) throws {
-        print("struct ActionsData : Codable init")
+    public init(from decoder: Decoder) throws {
+        print("struct ActionsData : Codable public init")
         //        print("CodingKeys.self: \(CodingKeys.self)")
         let values = try decoder.container(keyedBy: CodingKeys.self)
         //        print("values: \(values)")
@@ -360,7 +360,7 @@ struct DataSource : Decodable {
 
 typealias RawFiltersData = [DataSource]
 
-struct DataCardData : Decodable {
+public struct DataCardData : Decodable {
     var _data : [DataItem]?
     var _struct : [StructItem]?
     let _info : InfoObject?
@@ -386,8 +386,8 @@ struct DataCardData : Decodable {
         self.rawData = nil
     }
     
-    init(from decoder: Decoder) throws {
-        print("struct DataCardData : Codable init")
+    public init(from decoder: Decoder) throws {
+        print("struct DataCardData : Codable public init")
         print("CodingKeys.self: \(CodingKeys.self)")
         let values = try decoder.container(keyedBy: CodingKeys.self)
         _struct = try values.decodeIfPresent([StructItem].self, forKey: ._struct)
@@ -442,7 +442,7 @@ extension DataCardData.GenericValue {
 
 extension DataCardData.GenericValue {
     
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let stringValue = try? container.decode(String.self) {
             self = .stringValue(stringValue)
@@ -464,7 +464,7 @@ extension DataCardData.GenericValue {
 }
 
 extension DataCardData.GenericValue {
-    func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
         case .stringValue(let stringValue): try container.encode(stringValue)
